@@ -1,0 +1,40 @@
+
+WALLET RECONCILIATION & DISCREPANCY ANALYSIS – KEY FINDINGS
+============================================================
+
+Dataset: 6,000 synthetic bank-debit / wallet-credit pairs
+Overall discrepancy rate: 12.2%
+
+1. DISCREPANCY REASONS
+discrepancy_reason
+Provider lag / delayed credit       212
+Amount mismatch                     175
+Webhook failure / never credited    165
+Provider error                      120
+Zero credit                          63
+
+   Dominant issues:
+   - Provider lag / delayed credit
+   - Amount mismatches
+   - Webhook failures (never credited)
+
+2. PROVIDER COMPARISON
+            total  discrepancies   rate
+provider                               
+Provider A   2922            354  0.121
+Provider B   1845            224  0.121
+Provider C   1233            157  0.127
+
+3. CREDIT LAG
+   Median lag for credited transactions is low, but a long tail exists.
+   Transactions that take > 5 minutes are flagged as discrepancies.
+
+BUSINESS VALUE
+--------------
+This pipeline essentially automates the manual reconciliation work that
+support teams currently do by hand:
+- Flag mismatches automatically
+- Surface which provider / reason is driving the volume
+- Give ops a daily "discrepancy dashboard" instead of ticket-by-ticket digging
+
+All data is synthetic. No real customer or company data was used.
